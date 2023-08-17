@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+.verse-number{
+  display:inline;
+  border: 2px solid black
+}
+
+*{
+  border: 1px solid red
+}
+
+.nd{
+  font-weight:500;
+}

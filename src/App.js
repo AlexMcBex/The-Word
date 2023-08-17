@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+// Components
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+// import Language from './components/Language';
+import Bibles from './components/Bibles';
+import Books from './components/Books';
+import Chapters from './components/Chapters';
+import Verse from './components/Verse';
+import ChapterDetail from './components/ChapterDetail';
+import './App.css'
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/bibles" element={<Bibles />} />
+        <Route path="/bibles/:bibleId/books" element={<Books />} />
+        <Route path="/bibles/:bibleId/books/:bookId" element={<Chapters />} />
+        <Route path="/bibles/:bibleId/books/:bookId/chapters/:chapterId" element={<ChapterDetail />} />
+        <Route path="/bibles/:bibleId/books/:bookId/chapters/:chapterId/verse/:verseId" element={<Verse />} />
+
+        {/* <Route path="/language/:languageId" element={<Language />} /> */}
+        {/* Uncomment and use these routes when you have the components ready */}
+        {/* <Route path="/bible/:bibleId" element={<Bible />} /> */}
+        {/* <Route path="/book/:bookId" element={<Book />} /> */}
+        {/* <Route path="/chapter/:chapterId" element={<Chapter />} /> */}
+        {/* <Route path="/verse/:verseId" element={<Verse />} /> */}
+      </Routes>
+    </Router>
   );
 }
 
