@@ -20,7 +20,7 @@ const Bibles = () => {
       <ul>
 {bibles.map(bible => (
         <li>
-          <Link key={bible.id} to={`/bibles/${bible.id}/books`}>
+          <Link  className='link' key={bible.id} to={`/bibles/${bible.id}/books`}>
           {bible.name}
         </Link>
         </li> 

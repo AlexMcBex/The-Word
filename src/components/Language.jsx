@@ -15,7 +15,7 @@ const Language = () => {
   return (
     <div>
       {languages.map(language => (
-        <Link key={language.id} to={`/bible/${language.id}`}>
+        <Link className='link'  key={language.id} to={`/bible/${language.id}`}>
           {language.name}
         </Link>
       ))}

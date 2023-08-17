@@ -17,11 +17,17 @@ const Books = () => {
 
   return (
     <div>
-    {books.map(book => (
-      <Link key={book.id} to={`/bibles/${bibleId}/books/${book.id}`}>
+      <ul>
+ {books.map(book => (
+      <li>
+        <Link  className='link' key={book.id} to={`/bibles/${bibleId}/books/${book.id}`}>
         {book.name}
       </Link>
+      </li>
+      
     ))}
+      </ul>
+   
   </div>
   );
 }

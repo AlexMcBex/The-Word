@@ -22,12 +22,14 @@ const Verse = () => {
 
   return (
     <div>
+      <button onClick={() => navigateToVerse(verse.previous.id)}>Previous Verse</button>
+      <button onClick={() => navigateToVerse(verse.next.id)}>Next Verse</button>
+      
       {verse.content && (
         <div dangerouslySetInnerHTML={{ __html: verse.content }} />
       )}
-      <button onClick={() => navigateToVerse(verse.previous.id)}>Previous Verse</button>
-      <button onClick={() => navigateToVerse(verse.next.id)}>Next Verse</button>
     </div>
+    
   );
 }
 

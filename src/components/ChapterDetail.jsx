@@ -43,16 +43,16 @@ const ChapterDetail = () => {
 
   return (
     <div>
-      <div>
+      {/* <div>
   <h2>Verses</h2>
   {verses.map(verse => (
     <div key={verse.id} className='verse-number'>
-      <Link to={`/bibles/${verse.bibleId}/books/${verse.bookId}/chapters/${verse.chapterId}/verse/${verse.id}`}>
+      <Link className='link'  to={`/bibles/${verse.bibleId}/books/${verse.bookId}/chapters/${verse.chapterId}/verse/${verse.id}`}>
       {verse.reference.split(":")[1]}
       </Link>
     </div>
   ))}
-</div>
+</div> */}
       <div>
       <div  id="content" >
   {previousChapter && (

@@ -24,7 +24,7 @@ return (
   <div>
     <h3>Book</h3>
     {chapters.map(chapter => (
-      <Link key={chapter.id} to={`/bibles/${bibleId}/books/${bookId}/chapters/${chapter.id}`}>
+      <Link  className='link' key={chapter.id} to={`/bibles/${bibleId}/books/${bookId}/chapters/${chapter.id}`}>
         {chapter.number}
       </Link>
     ))}
