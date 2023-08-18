@@ -1,8 +1,8 @@
 // src/components/ChapterDetail.js
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { fetchVersesForChapter, fetchChapterContent } from '../utils/api';
-import { Link } from 'react-router-dom';
+
 
 
 const ChapterDetail = () => {
@@ -12,14 +12,18 @@ const ChapterDetail = () => {
   const [nextChapter, setNextChapter] = useState(null);
   const [previousChapter, setPreviousChapter] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const bookName = queryParams.get('bookName');
+  const chapter = queryParams.get('chapter')
 
-  const navigateToChapter = (chapterId) => {
-    navigate(`/bibles/${bibleId}/books/${bookId}/chapters/${chapterId}#content`);
+  const navigateToChapter = (chapterId, chapter) => {
+    navigate(`/bibles/${bibleId}/books/${bookId}/chapters/${chapterId}?bookName=${bookName}&chapter=${chapter}`);
   }
   
-  const navigateToVerse = (verseId) => {
-    navigate(`/bibles/${bibleId}/books/${bookId}/chapters/${chapterId}/verse/${verseId}`);
-  }
+//   const navigateToVerse = (verseId) => {
+//     navigate(`/bibles/${bibleId}/books/${bookId}/chapters/${chapterId}/verse/${verseId}`);
+//   }
 
 
 
@@ -37,7 +41,7 @@ const ChapterDetail = () => {
       })
       .catch(error => console.error("Error fetching chapter content:", error));
     
-  }, [bibleId, chapterId]);
+  }, [bibleId, chapterId, verses]);
   
   
 
@@ -56,22 +60,35 @@ const ChapterDetail = () => {
       <div>
       <div  id="content" >
   {previousChapter && (
-    <button onClick={() => navigateToChapter(previousChapter.id)}>
+    <button onClick={() => navigateToChapter(previousChapter.id, previousChapter.number)}>
       Previous: {previousChapter.number}
     </button>
   )}
   {nextChapter && (
-    <button onClick={() => navigateToChapter(nextChapter.id)}>
+    <button onClick={() => navigateToChapter(nextChapter.id, nextChapter.number)}>
       Next: {nextChapter.number}
     </button>
   )}
 </div>
 
-  <h2>Chapter Content</h2>
+  <h2>{bookName} </h2><h4>chapter {chapter}</h4>
   <div dangerouslySetInnerHTML={{ __html: chapterContent }} />
+</div>
+<div  id="content" >
+  {previousChapter && (
+    <button onClick={() => navigateToChapter(previousChapter.id, previousChapter.number)}>
+      Previous: {previousChapter.number}
+    </button>
+  )}
+  {nextChapter && (
+    <button onClick={() => navigateToChapter(nextChapter.id, nextChapter.number)}>
+      Next: {nextChapter.number}
+    </button>
+  )}
 </div>
 
     </div>
+    
   );
 }
 

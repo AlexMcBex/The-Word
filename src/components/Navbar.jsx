@@ -1,9 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { BibleProvider } from './BibleContext';
 
 // Assuming you have a context that provides current bible, book, and chapter
-import { BibleContext, useBibleContext } from './BibleContext';
+import {  useBibleContext } from './BibleContext';
 
 
 function Navbar() {
@@ -14,7 +13,7 @@ console.log("Bible:", bible, "Book:", book, "Chapter:", chapter);
 
   return (
     <nav className='navbar'>
-      <div className="navLeft"> <Link className='link' to="/">The Word</Link></div>
+      <div className="navLeft"> <Link className='nav-link link' to="/">The Word</Link></div>
       
       <div className="navCenter">
         {bible && <Link to={`/bibles/${bible.id}/books`}>{bible.name}</Link>}
