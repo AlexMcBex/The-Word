@@ -11,13 +11,18 @@ import Books from './components/Books';
 import Chapters from './components/Chapters';
 import Verse from './components/Verse';
 import ChapterDetail from './components/ChapterDetail';
+import BibleProvider from './components/BibleContext';
+
 import './App.css'
 
 
 function App() {
   return (
-    <Router>
+    
+    <BibleProvider>
+      <Router>
       <Navbar />
+    <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/bibles" element={<Bibles />} />
@@ -33,7 +38,9 @@ function App() {
         {/* <Route path="/chapter/:chapterId" element={<Chapter />} /> */}
         {/* <Route path="/verse/:verseId" element={<Verse />} /> */}
       </Routes>
+    </div>
     </Router>
+    </BibleProvider>
   );
 }
 
